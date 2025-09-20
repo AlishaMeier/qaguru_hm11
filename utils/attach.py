@@ -10,24 +10,23 @@ def add_screenshot(browser):
 # логи
 def add_logs(browser):
     try:
-        # Пробуем получить логи браузера
+
         logs = browser.driver.get_log('browser')
         log_text = "".join(f"{entry['message']}\n" for entry in logs)
     except Exception:
 
         log_text = "Browser logs are not available."
 
-    # Прикрепляем логи к Allure
     import allure
     from allure_commons.types import AttachmentType
     allure.attach(log_text, name='browser_logs', attachment_type=AttachmentType.TEXT, extension='.log')
 
-# html-код страницы
+
 def add_html(browser):
     html = browser.driver.page_source
     allure.attach(html, 'page_source', AttachmentType.HTML, '.html')
 
-# Скринкаст
+
 def add_video(browser):
     video_url = f"https://selenoid.autotests.cloud/video/" + browser.driver.session_id + ".mp4"
     html = "<html><body><video width='100%' height='100%' controls autoplay><source src='" \

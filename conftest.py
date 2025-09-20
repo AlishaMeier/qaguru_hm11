@@ -31,11 +31,11 @@ def setup_browser():
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",   #os.getenv("SELENOID_URL")
         options=options)
 
-    browser.config.driver = driver  # Создаем объект Selene с WebDriver
+    browser.config.driver = driver
 
-    yield browser  # Возвращаем объект browser для тестов
+    yield browser
 
-    # После теста собираем артефакты
+
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_html(browser)

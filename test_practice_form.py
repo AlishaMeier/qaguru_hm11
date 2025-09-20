@@ -35,14 +35,11 @@ def test_fill_form(setup_browser):
         browser.element('[id="currentAddress"]').should(be.visible).type("Almaty")
     with allure.step("Choose state"):
         browser.element('#state input').type('NCR').press_enter()
-        #browser.element('[id="state"]').should(be.visible).click()
-        #browser.element('#react-select-3-input').type('NCR').press_enter()
     with allure.step("Choose city"):
         browser.element('[id="city"]').should(be.visible).click()
         browser.element('[id="react-select-4-input"]').type('Delhi').press_enter()
     with allure.step("Send form"):
         browser.element('#submit').click()
-    #browser.element('[id="submit"]').should(be.visible).click()
     with allure.step("Check sending form"):
         browser.element('[id="example-modal-sizes-title-lg"]').should(be.visible).should(have.text('Thanks for submitting the form'))
 
